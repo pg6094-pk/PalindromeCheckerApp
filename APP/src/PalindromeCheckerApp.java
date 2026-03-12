@@ -10,8 +10,20 @@ public class PalindromeCheckerApp {
         String input = sc.nextLine();
 
         String normalized = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+        String s = sc.nextLine();
 
-        boolean isPalindrome = true;
+        boolean result = check(s, 0, s.length() - 1);
+
+        System.out.println("Is Palindrome? : " + result);
+
+        sc.close();
+    }
+
+    private static boolean check(String s, int start, int end) {
+
+        if (start >= end) {
+            return true;
+        }
 
         for (int i = 0; i < normalized.length() / 2; i++) {
 
@@ -24,5 +36,10 @@ public class PalindromeCheckerApp {
         System.out.println("Is Palindrome? : " + isPalindrome);
 
         sc.close();
+        if (s.charAt(start) != s.charAt(end)) {
+            return false;
+        }
+
+        return check(s, start + 1, end - 1);
     }
 }
