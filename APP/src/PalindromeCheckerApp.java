@@ -9,6 +9,27 @@ public class PalindromeCheckerApp {
         System.out.print("Input : ");
         String input = sc.nextLine();
 
+        PalindromeService service = new PalindromeService();
+
+        boolean result = service.checkPalindrome(input);
+
+        System.out.println("Is Palindrome? :     " + result);
+
+        sc.close();
+    }
+}
+
+class PalindromeService {
+
+    public boolean checkPalindrome(String input) {
+
+        int start = 0;
+        int end = input.length() - 1;
+
+        while (start < end) {
+
+            if (input.charAt(start) != input.charAt(end)) {
+                return false;
         String normalized = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
         String s = sc.nextLine();
 
@@ -31,8 +52,12 @@ public class PalindromeCheckerApp {
                 isPalindrome = false;
                 break;
             }
+
+            start++;
+            end--;
         }
 
+        return true;
         System.out.println("Is Palindrome? : " + isPalindrome);
 
         sc.close();
